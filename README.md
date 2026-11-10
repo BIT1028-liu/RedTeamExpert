@@ -56,7 +56,7 @@
 ### 安装与配置
 
 ```bash
-https://github.com/BIT1028-liu/RedTeamExpert.git
+git clone https://github.com/BIT1028-liu/RedTeamExpert.git
 cd RedTeamExpert
 
 # 安装依赖
