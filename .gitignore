@@ -1,0 +1,28 @@
+# 密钥与配置（最高优先级，必须保持第一行）
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# IDE 与工具
+.idea/
+.langgraph_api/
+.ipynb_checkpoints/
+
+# 本地数据
+*.db
+*.db-shm
+*.db-wal
+
+# 红队自测与其他厂商实验（不上传，保持仓库只含 Tavily 工具链）
+pyrit_lab/
+prompt_fuzzer/
+SDK调用/
+test_vl_base64.py
+
+# 本地保留的旧版独立变体，不进仓库（内容已由根目录 RedTeamExpert.py 取代）
+app/agents/RedTeamExpert_lo.py
+
+# 虚拟环境（uv 生成的 .venv 自带 ignore，这里写一份更保险）
+.venv/

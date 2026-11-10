@@ -1,0 +1,7 @@
+{
+    "dependencies":["."],
+    "graphs":{
+      "RedTeamExpert": "./app/agents/RedTeamExpert.py:agent"
+    },
+    "env": ".env"
+}

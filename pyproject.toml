@@ -1,0 +1,23 @@
+[project]
+name = "python-project"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "alibabacloud-oss-v2>=1.4.0",
+    "fastapi>=0.142.2",
+    "langchain>=1.4.3",
+    "langchain-anthropic>=1.7.5",
+    "langchain-deepseek>=1.1.1",
+    "langchain-openai>=1.6.7",
+    "langchain-tavily>=0.2.18",
+    "langgraph>=1.2.12",
+    "langgraph-checkpoint-postgres>=3.1.2",
+    "langgraph-checkpoint-sqlite>=3.1.1",
+    "langgraph-cli[inmem]>=0.4.32",
+    "notebook>=7.6.3",
+    "openai>=3.23.0",
+    "psycopg[binary]>=3.3.6",
+    "python-dotenv>=1.2.4",
+    "python-multipart>=0.0.32",
+    "zai-sdk>=0.2.3",
+]
