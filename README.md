@@ -5,7 +5,7 @@
 ## 免责声明
 
 1. **用途限制**：本项目仅面向**防御方向**的安全工作（威胁情报分析、检测与加固建议、应急响应）。
-   系统提示词内置道德底线与法律合规双层规则（详见 `app/agents/RedTeamExpert.py` 的 A–H 节），
+   系统提示词内置道德底线与法律合规双层规则（详见 `app/agents/RedTeamExpert.py` 的 A–F 节），
    会对未授权入侵、漏洞武器化等请求明确拒绝。**禁止**将本项目用于任何未授权的渗透测试、
    系统入侵、数据窃取或其他违法违规活动。
 2. **合规义务**：使用者应遵守所在司法辖区的法律法规（包括但不限于《中华人民共和国网络安全法》
@@ -124,7 +124,7 @@ RedTeamExpert/
 ├── app/                        # FastAPI 后端
 │   ├── main.py                 # 入口：lifespan 装配 checkpointer + Agent
 │   ├── api/                    # 路由层（chat / sessions / oss）
-│   ├── agents/RedTeamExpert.py # Agent 定义（系统提示词 A–H 节在此）
+│   ├── agents/RedTeamExpert.py # Agent 定义（系统提示词 A–F 节在此）
 │   ├── core/config.py          # 环境变量统一加载
 │   └── services/               # OSS / 会话注册表
 ├── RedTeamExpert.py            # 独立版 Agent（自包含，不依赖 app/）
