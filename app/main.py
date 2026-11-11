@@ -10,13 +10,13 @@ from app.agents.RedTeamExpert import build_agent
 from app.api import routes_chat, routes_oss, routes_sessions
 from app.core.config import settings
 
-CHECKPOINT_DB = Path(__file__).resolve().parents[1] / "rescources" / "checkpoints.db"
+CHECKPOINT_DB = Path(__file__).resolve().parents[1] / "resources" / "checkpoints.db"
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """启动时装配 checkpointer 和 Agent，关闭时释放 SQLite 连接"""
-    # rescources/ 里只有被 .gitignore 排除的 .db 文件，git 不追踪空目录，
+    # resources/ 里只有被 .gitignore 排除的 .db 文件，git 不追踪空目录，
     # 新 clone 的仓库里该目录不存在，SQLite 无法在缺失的父目录下建库，需先创建
     CHECKPOINT_DB.parent.mkdir(parents=True, exist_ok=True)
     async with AsyncSqliteSaver.from_conn_string(str(CHECKPOINT_DB)) as checkpointer:

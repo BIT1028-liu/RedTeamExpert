@@ -2,18 +2,30 @@
 # 注意：这里只存"会话元数据"；对话内容存在 LangGraph 的 checkpointer 里（见 app/main.py）
 import sqlite3
 import threading
+from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path
 
-DB_PATH = Path(__file__).resolve().parents[2] / "rescources" / "sessions.db"
+DB_PATH = Path(__file__).resolve().parents[2] / "resources" / "sessions.db"
 
 _lock = threading.Lock()
 
 
-def _conn() -> sqlite3.Connection:
+@contextmanager
+def _conn():
+    """提供用完即关的 SQLite 连接。
+
+    注意：sqlite3.Connection 自带的 context manager 语义只负责事务提交/回滚，
+    并不会关闭连接；直接 `with _conn() as conn` 会每次泄漏一个句柄。
+    这里显式包一层：退出时先提交事务，再关闭连接。
+    """
     conn = sqlite3.connect(DB_PATH, check_same_thread=False)
     conn.row_factory = sqlite3.Row
-    return conn
+    try:
+        with conn:
+            yield conn
+    finally:
+        conn.close()
 
 
 def _init_db() -> None:

@@ -36,9 +36,12 @@ def get_client() -> oss.Client:
 
 
 def build_object_key(filename: str, prefix: str = "uploads") -> str:
-    """用 uuid 重命名，避免中文/重名/路径穿越问题；保留原扩展名"""
+    """用 uuid 重命名，避免中文/重名/路径穿越问题；保留原扩展名并校验白名单"""
     ext = ("." + filename.rsplit(".", 1)[-1].lower()) if "." in filename else ""
-    if ext and ext not in ALLOWED_EXTENSIONS:
+    if not ext:
+        # 无扩展名的文件一律拒绝，防止去掉 .exe 等后缀的二进制绕过白名单
+        raise ValueError("无法识别文件扩展名，已拒绝上传")
+    if ext not in ALLOWED_EXTENSIONS:
         raise ValueError(f"不支持的文件类型: {ext}")
     return f"{prefix}/{uuid.uuid4().hex}{ext}"
 
