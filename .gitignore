@@ -27,5 +27,6 @@ app/agents/RedTeamExpert_lo.py
 # 虚拟环境（uv 生成的 .venv 自带 ignore，这里写一份更保险）
 .venv/
 
-# LangChain 学习笔记（练习性质，不进仓库）
+# LangChain 学习笔记与测试素材（练习性质，不进仓库）
 *.ipynb
+langchain_image/
